@@ -24,6 +24,17 @@
               <% end %>
             </td>
             <td><%= @book.body %></td>
+            <td>
+              <% if @book.favorited_by?(current_user) %>
+                <%= link_to book_favorites_path(@book), method: :delete do %>
+                  <font color="red">♥<%= @book.favorites.count %></font>
+                <% end %>
+              <% else %>
+                <%= link_to book_favorites_path(@book), method: :post do %>
+                  ♥<%= @book.favorites.count %>
+                <% end %>
+              <% end %>
+            </td>
             <!--作成ユーザなら表示↓-->
             <% if @book.user == current_user %>
             <td><%= link_to "Edit", edit_book_path(@book), class: 'btn btn-success' %></td>
