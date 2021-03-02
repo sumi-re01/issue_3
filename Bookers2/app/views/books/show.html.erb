@@ -69,6 +69,9 @@
         </table>
       </div>
       <div class="row">
+        <!--post先指定してもbook_idがないって言われる。>>controller-->
+        <!--@book_commentだけだとNoMethoderror、 ＠book＿commentsにするとページは見れるけどルートエラーになる-->
+        <!--(model:[@book, @book_comment], local:true)も文法エラ〜-->
         <%= form_with model: @book_comment, url: "/books/:book_id/book_comments", local:true do |f| %>
           <div class="comment_form">
             <%= f.text_area :comment %>
